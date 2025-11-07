@@ -1,0 +1,22 @@
+#!/bin/sh
+##################################################
+# configdata:postinst
+##################################################
+
+# this script only runs during configure.
+# if $1 is not equal to configure, exit
+test "$1" = "configure" || exit 0;
+
+# xz-utils is required for untarring
+# this package is installed with dpkg -i configdata
+# apt install also does not work here
+
+
+# set ownership for /etc/apt files
+chown root:root /etc/apt/preferences.d/mozillateamppa
+chown root:root /etc/apt/sources.list.d/mozillateam-ubuntu-ppa-questing.sources
+chown root:root /etc/apt/apt.conf.d/51unattended-upgrades-thunderbird
+
+# /home/robert/thunderbirddata.tar.xz must be extracted
+cd /home/robert
+sudo -u robert tar --overwrite --xz -xvf thunderbirddata.tar.xz
