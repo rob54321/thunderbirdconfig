@@ -1,9 +1,18 @@
 #!/usr/bin/bash
 #thunderbireddata::postrm
 # Only remove files if we are removing not upgrading
-test $1 eq "remove" || exit 0;
+test $1 = "remove" || exit 0;
 
 # remove all files created by postinst
 rm -v /etc/apt/apt.conf.d/51unattended-upgrades-thunderbird
 rm -v /etc/apt/preferences.d/mozillateamppa
 rm -v /etc/apt/sources.list.d/mozillateam-ubuntu-ppa-questing.sources
+
+# remove all thunderbird data
+# prompt 
+echo "Remove all thunderbird data in /home/robert/.thunderbird? default (n): (y/n)"
+read answer
+test "${answer}" = "y" && rm -rvf /home/robert/.thunderbird;
+
+# set result to true
+exit 0;
