@@ -29,3 +29,8 @@ echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codenam
 # /home/robert/thunderbirddata.tar.xz must be extracted
 cd /home/robert
 sudo -u robert tar --overwrite --xz -xvf thunderbirddata.tar.xz
+
+# remove the file
+rm -v /home/robert/thunderbirddata.tar.xz
+rm -v /home/robert/buildthdata
+rm -v /home/robert/xtractthdata

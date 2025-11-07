@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+#thunderbireddata::postrm
+# Only remove files if we are removing not upgrading
+test $1 eq "remove" || exit 0;
+
+# remove all files created by postinst
+rm -v /etc/apt/apt.conf.d/51unattended-upgrades-thunderbird
+rm -v /etc/apt/preferences.d/mozillateamppa
+rm -v /etc/apt/sources.list.d/mozillateam-ubuntu-ppa-questing.sources
