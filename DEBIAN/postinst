@@ -7,14 +7,24 @@
 # if $1 is not equal to configure, exit
 test "$1" = "configure" || exit 0;
 
+# add repository for thunderbird
+add-apt-repository ppa:mozillateam/ppa
+
+# prioritise PPA over snap
+echo "Package: thunderbird*
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 1001
+
+Package: thunderbird*
+Pin: release o=Ubuntu
+Pin-Priority: -1" > /etc/apt/preferences.d/mozillateamppa
+
+# to avoid snap taking over automatic updates
+echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' > /etc/apt/apt.conf.d/51unattended-upgrades-thunderbird
+
+
 # xz-utils is required for untarring
 # apt install also does not work here
-
-
-# set ownership for /etc/apt files
-chown root:root /etc/apt/preferences.d/mozillateamppa
-chown root:root /etc/apt/sources.list.d/mozillateam-ubuntu-ppa-questing.sources
-chown root:root /etc/apt/apt.conf.d/51unattended-upgrades-thunderbird
 
 # /home/robert/thunderbirddata.tar.xz must be extracted
 cd /home/robert
