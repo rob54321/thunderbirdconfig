@@ -7,26 +7,31 @@
 # if $1 is not equal to configure, exit
 test "$1" = "configure" || exit 0;
 
-# add repository for thunderbird
-add-apt-repository ppa:mozillateam/ppa
+# add repository for thunderbird if it does not exist
+test -f /etc/apt/sources.list.d/mozillateam-ubuntu-ppa*.sources || add-apt-repository ppa:mozillateam/ppa -y
 
 # prioritise PPA over snap
-echo "Package: thunderbird*
+if test ! -f /etc/apt/preferences.d/mozillateamppa; then
+	echo "Package: thunderbird*
 Pin: release o=LP-PPA-mozillateam
 Pin-Priority: 1001
 
 Package: thunderbird*
 Pin: release o=Ubuntu
 Pin-Priority: -1" > /etc/apt/preferences.d/mozillateamppa
+fi
 
 # to avoid snap taking over automatic updates
-echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' > /etc/apt/apt.conf.d/51unattended-upgrades-thunderbird
-
+if test ! -f /etc/apt/apt.conf.d/51unattended-upgrades-thunderbird; then
+	echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' > /etc/apt/apt.conf.d/51unattended-upgrades-thunderbird
+fi
 
 # xz-utils is required for untarring
 # apt install also does not work here
 
 # /home/robert/thunderbirddata.tar.xz must be extracted
+# thunderbirddata.tar.xz  must not contain any emails including no local folders
+# since these will overwrite existing emails during installation
 cd /home/robert
 sudo -u robert tar --overwrite --xz -xvf thunderbirddata.tar.xz
 
