@@ -29,13 +29,13 @@ fi
 # xz-utils is required for untarring
 # apt install also does not work here
 
-# /home/robert/thunderbirddata.tar.xz must be extracted
-# thunderbirddata.tar.xz  must not contain any emails including no local folders
+# /home/robert/thunderbirdconfig.tar.xz must be extracted
+# thunderbirdconfig.tar.xz  must not contain any emails including no local folders
 # since these will overwrite existing emails during installation
 cd /home/robert
-sudo -u robert tar --overwrite --xz -xvf thunderbirddata.tar.xz
+sudo -u robert tar --overwrite --xz -xvf thunderbirdconfig.tar.xz
 
 # remove the file
-rm -v /home/robert/thunderbirddata.tar.xz
+rm -v /home/robert/thunderbirdconfig.tar.xz
 rm -v /home/robert/buildthdata
 rm -v /home/robert/xtractthdata

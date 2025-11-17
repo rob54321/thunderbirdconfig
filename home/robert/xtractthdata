@@ -2,4 +2,4 @@
 # extract thunderbirddata.tar.xz and remove config.tar.xz
 # must be run in /home/robert/
 cd /home/robert
-tar --xz -xvf thunderbirddata.tar.xz
+tar --xz -xvf thunderbirdconfig.tar.xz

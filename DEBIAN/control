@@ -1,8 +1,8 @@
-Package: thunderbirddata
-Version: 1.0.7
+Package: thunderbirdconfig
+Version: 1.0.8
 Architecture: amd64
 Maintainer: Robert Key robertkey021@gmail.com
 Section: myown
 Depends: xz-utils
 Priority: optional
-Description: Converts thunderbird from snap to normal and installs data. Install before thunderbird.
+Description: Converts thunderbird from snap to normal and installs config data. Installed with meta package thunderbird-meta
