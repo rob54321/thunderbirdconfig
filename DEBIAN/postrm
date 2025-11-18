@@ -12,7 +12,7 @@ test -f /root/thunderbird-output.txt && rm -v /root/thunderbird-output.txt
 # prompt for removal
 echo "Remove all thunderbird data in /home/robert/.thunderbird? default (n): (y/n)"
 read answer
-test "${answer}" = "y" && rm -rvf /home/robert/.thunderbird;
+test "${answer}" = "y" && rm -rf /home/robert/.thunderbird;
 
 # set result to true
 exit 0;
