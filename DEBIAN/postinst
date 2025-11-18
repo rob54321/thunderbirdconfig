@@ -39,3 +39,7 @@ sudo -u robert tar --overwrite --xz -xvf thunderbirdconfig.tar.xz
 rm -v /home/robert/thunderbirdconfig.tar.xz
 rm -v /home/robert/buildthdata
 rm -v /home/robert/xtractthdata
+
+# install thunderbird after time delay
+# so lock is released first
+(sleep 5; apt install thunderbird thunderbird-locale-en) &
