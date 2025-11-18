@@ -42,5 +42,7 @@ rm -v /home/robert/xtractthdata
 
 # install thunderbird after time delay
 # so lock is released first
+echo "============================================================="
 echo "Installing thunderbird and thunderbird-locale-en in 5 seconds"
+echo "============================================================="
 (sleep 5; apt install thunderbird thunderbird-locale-en -y) &
