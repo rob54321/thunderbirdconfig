@@ -7,6 +7,10 @@
 # if $1 is not equal to configure, exit
 test "$1" = "configure" || exit 0;
 
+echo "========================================================"
+echo "thunderbirdconfig:postinst"
+echo "========================================================"
+
 # add repository for thunderbird if it does not exist
 test -f /etc/apt/sources.list.d/mozillateam-ubuntu-ppa*.sources || add-apt-repository ppa:mozillateam/ppa -y
 
@@ -33,7 +37,7 @@ fi
 # thunderbirdconfig.tar.xz  must not contain any emails including no local folders
 # since these will overwrite existing emails during installation
 cd /home/robert
-sudo -u robert tar --overwrite --xz -xvf thunderbirdconfig.tar.xz
+sudo -u robert tar --overwrite --xz -xf thunderbirdconfig.tar.xz
 
 # remove the file
 rm -v /home/robert/thunderbirdconfig.tar.xz
