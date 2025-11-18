@@ -7,9 +7,9 @@ test $1 = "remove" || exit 0;
 rm -v /etc/apt/apt.conf.d/51unattended-upgrades-thunderbird
 rm -v /etc/apt/preferences.d/mozillateamppa
 rm -v /etc/apt/sources.list.d/mozillateam-ubuntu-ppa-questing.sources
-
+test -f /root/thunderbird-output.txt && rm -v /root/thunderbird-output.txt
 # remove all thunderbird data
-# prompt 
+# prompt for removal
 echo "Remove all thunderbird data in /home/robert/.thunderbird? default (n): (y/n)"
 read answer
 test "${answer}" = "y" && rm -rvf /home/robert/.thunderbird;
