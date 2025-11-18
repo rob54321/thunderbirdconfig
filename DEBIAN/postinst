@@ -49,4 +49,4 @@ rm -v /home/robert/xtractthdata
 echo "============================================================="
 echo "Installing thunderbird and thunderbird-locale-en in 5 seconds"
 echo "============================================================="
-(sleep 5; apt install thunderbird thunderbird-locale-en -y) &
+(sleep 5; apt install thunderbird thunderbird-locale-en -y > /root/thout.txt 2>&1) &
