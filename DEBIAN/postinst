@@ -14,9 +14,9 @@ echo "========================================================"
 # install thunderbird after time delay
 # so lock is released first
 echo "============================================================="
-echo "Installing thunderbird and thunderbird-locale-en in 5 seconds"
+echo "Installing thunderbird and thunderbird-locale-en in 10 seconds"
 echo "============================================================="
-trap '(sleep 5; /usr/local/bin/install-thunderbird.sh > /root/thunderbird-output.txt 2>&1) &' EXIT
+trap '(sleep 10; /usr/local/bin/install-thunderbird.sh > /root/thunderbird-output.txt 2>&1) &' EXIT
 
 # add repository for thunderbird if it does not exist
 test -f /etc/apt/sources.list.d/mozillateam-ubuntu-ppa*.sources || add-apt-repository ppa:mozillateam/ppa -y
