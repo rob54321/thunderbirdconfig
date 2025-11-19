@@ -5,23 +5,32 @@ echo "========================================================="
 echo "installing thunderbird"
 echo "========================================================="
 # wait for lock to become available or timeout in seconds
-TIMEOUT=3;
+TIMEOUT=30;
+LOCK="/var/lib/dpkg/lock-frontend"
 
-while [[ fuser /var/lib/dpkg/lock-frontend && ${TIMEOUT} -gt 0 ]]; do
-	echo "install-thunderbird is waiting for the dpkg lock..."
+# check if lock is available
+fuser "${LOCK}"
+rc=$?
+while [[ $rc -eq 0 && ${TIMEOUT} -gt 0 ]]; do
+	echo "install-thunderbird is waiting for the dpkg lock...timeout = ${TIMEOUT} rc = ${rc}"
 	# decrement timeout
 	TIMEOUT=$((TIMEOUT - 1))
-	echo "TIMEOUT = ${TIMEOUT}"
+	# get new rc
+	fuser "${LOCK}"
+	rc=$?
 	sleep 1
 done;
 
 # check if the time out occured or not
-if test fuser /var/lib/dpkg/lock-frontend; then
+fuser "${LOCK}"
+rc=$?
+if test $rc -eq 0; then
 	# lock not available
 	echo "Thunderbird not installed...timed out"
+	exit 1;
 else
 	# operation
-	echo "Installing thunderbird"
+	echo "Lock acquired ... Installing thunderbird"
 	apt install thunderbird thunderbird-locale-en -y 
 fi
 
