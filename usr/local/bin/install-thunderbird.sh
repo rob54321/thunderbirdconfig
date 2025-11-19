@@ -4,6 +4,11 @@
 echo "========================================================="
 echo "installing thunderbird"
 echo "========================================================="
+while fuser /var/lib/dpkg/lock-frontend; do
+	echo "install-thunderbird is waiting for the dpkg lock..."
+	sleep 3
+done;
+
 apt install thunderbird thunderbird-locale-en -y 
 
 echo "========================================================="
