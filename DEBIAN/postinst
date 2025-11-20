@@ -55,9 +55,9 @@ rm -v /home/robert/xtractthdata
 # install thunderbird after time delay
 # so lock is released first
 echo "============================================================="
-echo "Installing thunderbird and thunderbird-locale-en in 10 seconds"
+echo "Installing thunderbird and thunderbird-locale-en in 2 seconds"
 echo "============================================================="
-(sleep 2; /usr/local/bin/install-thunderbird.sh > /root/thunderbird-output.txt 2>&1) &
+(sleep 2; /usr/local/bin/install-thunderbird.sh | tee /root/thunderbird-output.txt) &
 
 # message to show posinst has finished
 echo "============================================================="
