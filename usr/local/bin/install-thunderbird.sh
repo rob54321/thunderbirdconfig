@@ -31,7 +31,7 @@ if test $rc -eq 0; then
 else
 	# operation
 	echo "Lock acquired ... Installing thunderbird"
-	apt install thunderbird thunderbird-locale-en -y
+	apt install thunderbird thunderbird-locale-en thunderbird-gnome-support -y
 fi
 
 echo "========================================================="
