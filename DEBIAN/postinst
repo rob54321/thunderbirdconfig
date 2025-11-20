@@ -57,7 +57,7 @@ rm -v /home/robert/xtractthdata
 echo "============================================================="
 echo "Installing thunderbird and thunderbird-locale-en in 2 seconds"
 echo "============================================================="
-(sleep 2; /usr/local/bin/install-thunderbird.sh | tee /root/thunderbird-output.txt) &
+(sleep 2; /usr/local/bin/install-thunderbird.sh > /root/thunderbird-output.txt 2>&1) &
 
 # message to show posinst has finished
 echo "============================================================="
