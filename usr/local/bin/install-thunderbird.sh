@@ -16,9 +16,9 @@ while [[ $rc -eq 0 && ${TIMEOUT} -gt 0 ]]; do
 	# decrement timeout
 	TIMEOUT=$((TIMEOUT - 5))
 	# get new rc
+	sleep 5
 	fuser "${LOCK}"
 	rc=$?
-	sleep 5
 done;
 
 # check if the time out occured or not
