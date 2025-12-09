@@ -1,6 +1,6 @@
 #!/bin/sh
 ##################################################
-# configdata:postinst
+# thunderbirdconfig:postinst
 ##################################################
 
 # this script only runs during configure.

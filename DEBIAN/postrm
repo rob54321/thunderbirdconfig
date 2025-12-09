@@ -1,5 +1,8 @@
 #!/usr/bin/bash
+####################################################
 #thunderbirdconfig::postrm
+####################################################
+
 # Only remove files if we are removing not upgrading
 test $1 = "remove" || exit 0;
 
